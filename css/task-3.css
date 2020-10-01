@@ -1,0 +1,7 @@
+.gallery img {
+  display: flexbox;
+
+  width: calc(100% / 3 - 100px);
+
+  margin: 50px;
+}
