@@ -31,7 +31,15 @@ function createBoxes(amount) {
 
     boxesAcc.push(divEl);
   }
-  boxesAcc.forEach((el) =>
-    boxesEl.insertAdjacentHTML("beforeend", el.outerHTML)
-  );
+
+  const divisions = Array.from(boxesAcc).reduce((acc, el) => {
+    let divEl = document.createElement("div");
+
+    divEl.insertAdjacentHTML("beforeend", `${el.outerHTML}`);
+    acc.push(divEl);
+
+    return acc;
+  }, []);
+
+  boxesEl.append(...divisions);
 }
