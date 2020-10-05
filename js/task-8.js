@@ -2,6 +2,7 @@ const numbersEl = document.querySelector("#controls [type='number']");
 const renderBtnEl = document.querySelector("[data-action='render']");
 const destroyBtnEl = document.querySelector("[data-action='destroy']");
 const boxesEl = document.getElementById("boxes");
+let acc = 20;
 
 renderBtnEl.addEventListener("click", () => {
   const qty = numbersEl.value;
@@ -10,18 +11,18 @@ renderBtnEl.addEventListener("click", () => {
 });
 
 destroyBtnEl.addEventListener("click", () => {
+  acc = 20;
+
   boxesEl.innerHTML = "";
 });
 
 function createBoxes(amount) {
-  const boxesAcc = [];
-  const size = 10;
-  let acc = 20;
+  const boxesAcc = Array(+amount).fill();
 
-  for (let i = 0; i < amount; i++) {
+  boxesAcc.forEach((el, index, arr) => {
     const divEl = document.createElement("div");
 
-    acc += size;
+    acc += 10;
 
     divEl.style.width = `${acc}px`;
     divEl.style.height = `${acc}px`;
@@ -29,10 +30,10 @@ function createBoxes(amount) {
       Math.random() * (255 - 1) + 1
     }, ${Math.random() * (255 - 1) + 1})`;
 
-    boxesAcc.push(divEl);
-  }
+    arr[index] = divEl;
+  });
 
-  const divisions = Array.from(boxesAcc).reduce((acc, el) => {
+  const divisions = boxesAcc.reduce((acc, el) => {
     let divEl = document.createElement("div");
 
     divEl.insertAdjacentHTML("beforeend", `${el.outerHTML}`);

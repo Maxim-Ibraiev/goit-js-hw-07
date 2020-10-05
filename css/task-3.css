@@ -1,7 +1,17 @@
+.gallery {
+  display: flex;
+
+  padding: 0;
+
+  list-style-type: none;
+}
+
 .gallery img {
-  display: flexbox;
+  width: 100%;
+}
 
-  width: calc(100% / 3 - 100px);
+.gallery li {
+  width: calc(100% / 3 - 200);
 
-  margin: 50px;
+  margin: 25px;
 }

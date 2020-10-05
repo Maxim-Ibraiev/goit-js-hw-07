@@ -19,14 +19,18 @@ const images = [
 const listEl = document.getElementById("gallery");
 
 const result = images.reduce((acc, { url, alt }) => {
-  const el = document.createElement("img");
+  const imgEl = document.createElement("img");
+  const liEl = document.createElement("li");
+  liEl.append(imgEl);
 
-  el.setAttribute("src", url);
-  el.setAttribute("alt", alt);
+  imgEl.setAttribute("src", `${url}`);
+  imgEl.setAttribute("alt", `${alt}`);
 
-  acc.push(el);
+  acc.push(liEl);
 
   return acc;
 }, []);
 
-result.forEach((el) => listEl.insertAdjacentHTML("beforeend", el.outerHTML));
+result.forEach((el) =>
+  listEl.insertAdjacentHTML("beforeend", `${el.outerHTML}`)
+);
