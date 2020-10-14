@@ -19,18 +19,9 @@ const images = [
 const listEl = document.getElementById("gallery");
 
 const result = images.reduce((acc, { url, alt }) => {
-  const imgEl = document.createElement("img");
-  const liEl = document.createElement("li");
-  liEl.append(imgEl);
-
-  imgEl.setAttribute("src", `${url}`);
-  imgEl.setAttribute("alt", `${alt}`);
-
-  acc.push(liEl);
+  acc += `<li><img src='${url}' alt='${alt}'></li>`;
 
   return acc;
-}, []);
+}, "");
 
-result.forEach((el) =>
-  listEl.insertAdjacentHTML("beforeend", `${el.outerHTML}`)
-);
+listEl.insertAdjacentHTML("beforeend", result);

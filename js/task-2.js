@@ -14,7 +14,7 @@ const listEl = document.getElementById("ingredients");
 let arr = ingredients.reduce((acc, el) => {
   const liEl = document.createElement("li");
 
-  liEl.textContent = `${el}`;
+  liEl.textContent = el;
   acc.push(liEl);
 
   return acc;
